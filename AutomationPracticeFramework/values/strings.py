@@ -7,3 +7,7 @@ valid_message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec 
                 "malesuada ut augue in sollicitudin. Aenean aliquet metus eget commodo fringilla. Cras in pulvinar " \
                 "laoreet."
 missing_subject_error = "Please select a subject from the list provided."
+subject = "Webmaster"
+invalid_email_error = "Invalid email address."
+invalid_email = "lkdhjasgflkj"
+missing_message_error = "The message cannot be blank."

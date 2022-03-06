@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -16,6 +17,7 @@ class ContactUsForm:
 		self.subject_field = WebDriverWait(self.driver.instance, 10).until(
 			EC.visibility_of_element_located((
 				By.ID, "uniform-id_contact")))
+		self.subject_dropdown = Select(self.driver.instance.find_element_by_id('id_contact'))
 		self.email_field = WebDriverWait(self.driver.instance, 10).until(
 			EC.visibility_of_element_located((
 				By.ID, "email")))
@@ -67,3 +69,5 @@ class ContactUsForm:
 			EC.visibility_of_element_located((
 				By.XPATH, "//li[contains(text(), '{0}')]".format(error))))
 
+	def select_subject_heading(self, subject):
+		self.subject_dropdown.select_by_visible_text(subject)
