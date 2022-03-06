@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
@@ -34,43 +35,56 @@ class ContactUsForm:
 			EC.visibility_of_element_located((
 				By.ID, "submitMessage")))
 
+	@allure.step("Confirm Title is present")
 	def validate_form_title_is_present(self):
 		assert self.title, "Contact Us Form Title is not visible"
 
+	@allure.step("Confirm Heading is present")
 	def validate_form_heading_is_present(self):
 		assert self.heading, "Contact Us Heading is not visible"
 
-	def validate_subjectf_field_is_present(self):
+	@allure.step("Confirm Subject field is present")
+	def validate_subject_field_is_present(self):
 		assert self.subject_field, "Subject Field is not visible"
 
+	@allure.step("Confirm Email field is present")
 	def validate_email_field_is_present(self):
 		assert self.email_field, "Email Field is not visible"
 
+	@allure.step("Confirm Order Reference is present")
 	def validate_order_reference_field_is_present(self):
 		assert self.order_reference_field, "Order Reference Field is not visible"
 
+	@allure.step("Confirm Attach File Field is present")
 	def validate_attach_file_field_is_present(self):
 		assert self.attach_file_field, "Attach File Field is not visible"
 
+	@allure.step("Confirm Message Field is present")
 	def validate_message_field_is_present(self):
 		assert self.message_field, "Message Field is not visible"
 
+	@allure.step("Input an Email Address")
 	def write_email_address(self, email):
 		self.email_field.send_keys(email)
 
+	@allure.step("Input a Message")
 	def write_message(self, message):
 		self.message_field.send_keys(message)
 
+	@allure.step("Click Send button")
 	def click_send_button(self):
 		self.send_button.click()
 
+	@allure.step("Validate a Contact Us Form error message")
 	def validate_error_message(self, error):
 		error_message = WebDriverWait(self.driver.instance, 10).until(
 			EC.visibility_of_element_located((
 				By.XPATH, "//li[contains(text(), '{0}')]".format(error))))
 
+	@allure.step("Select a Subject Heading")
 	def select_subject_heading(self, subject):
 		self.subject_dropdown.select_by_visible_text(subject)
 
+	@allure.step("Input an Order Reference")
 	def write_order_reference(self, order_reference):
 		self.order_reference_field.send_keys(order_reference)

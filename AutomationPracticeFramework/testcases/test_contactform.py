@@ -18,7 +18,7 @@ class ContactUsFormTestSuite(unittest.TestCase):
 		self.contact_us_form = ContactUsForm(self.driver)
 		self.contact_us_form.validate_form_title_is_present()
 		self.contact_us_form.validate_form_heading_is_present()
-		self.contact_us_form.validate_subjectf_field_is_present()
+		self.contact_us_form.validate_subject_field_is_present()
 		self.contact_us_form.validate_email_field_is_present()
 		self.contact_us_form.validate_order_reference_field_is_present()
 		self.contact_us_form.validate_attach_file_field_is_present()

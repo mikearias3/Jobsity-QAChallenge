@@ -42,3 +42,8 @@ python3 -m pytest testcases/ --alludir <output_folder>
 #example:
 python3 -m pytest testcases/ --alludir ./results/
 ```
+
+Consume the generated report after running tests:
+```
+allure serve ./results/
+```
