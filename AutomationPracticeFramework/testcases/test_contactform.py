@@ -65,6 +65,29 @@ class ContactUsFormTestSuite(unittest.TestCase):
 		self.contact_us_form.click_send_button()
 		self.contact_us_form.validate_error_message(strings.missing_message_error)
 
+	def test_contact_us_order_reference_validation_for_empty_message(self):
+		self.homescreen = HomeScreen(self.driver)
+		self.homescreen.click_contact_us_button()
+
+		self.contact_us_form = ContactUsForm(self.driver)
+		self.contact_us_form.select_subject_heading(strings.subject)
+		self.contact_us_form.write_email_address(strings.valid_email)
+		self.contact_us_form.write_message(strings.valid_message)
+		self.contact_us_form.click_send_button()
+		self.contact_us_form.validate_error_message(strings.missing_order_reference)
+
+	def test_contact_us_attach_file_validation_for_empty_field(self):
+		self.homescreen = HomeScreen(self.driver)
+		self.homescreen.click_contact_us_button()
+
+		self.contact_us_form = ContactUsForm(self.driver)
+		self.contact_us_form.select_subject_heading(strings.subject)
+		self.contact_us_form.write_email_address(strings.valid_email)
+		self.contact_us_form.write_message(strings.valid_message)
+		self.contact_us_form.write_order_reference(strings.valid_order_reference)
+		self.contact_us_form.click_send_button()
+		self.contact_us_form.validate_error_message(strings.missing_order_reference)
+
 	def tearDown(self):
 		self.driver.instance.quit()
 

@@ -71,3 +71,6 @@ class ContactUsForm:
 
 	def select_subject_heading(self, subject):
 		self.subject_dropdown.select_by_visible_text(subject)
+
+	def write_order_reference(self, order_reference):
+		self.order_reference_field.send_keys(order_reference)
