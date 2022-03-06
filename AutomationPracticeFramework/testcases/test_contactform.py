@@ -24,9 +24,19 @@ class ContactUsFormTestSuite(unittest.TestCase):
 		self.contact_us_form.validate_attach_file_field_is_present()
 		self.contact_us_form.validate_message_field_is_present()
 
+	def test_contact_us_subject_field_validation(self):
+		self.homescreen = HomeScreen(self.driver)
+		self.homescreen.click_contact_us_button()
+
+		self.contact_us_form = ContactUsForm(self.driver)
+		self.contact_us_form.write_email_address(strings.valid_email)
+		self.contact_us_form.write_message(strings.valid_message)
+		self.contact_us_form.click_send_button()
+		self.contact_us_form.validate_error_message(strings.missing_subject_error)
+
 	def tearDown(self):
 		self.driver.instance.quit()
 
 
 if __name__ == '__main__':
-    unittest.main()
+	unittest.main()

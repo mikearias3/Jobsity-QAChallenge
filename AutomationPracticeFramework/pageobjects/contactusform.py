@@ -28,6 +28,9 @@ class ContactUsForm:
 		self.message_field = WebDriverWait(self.driver.instance, 10).until(
 			EC.visibility_of_element_located((
 				By.ID, "message")))
+		self.send_button = WebDriverWait(self.driver.instance, 10).until(
+			EC.visibility_of_element_located((
+				By.ID, "submitMessage")))
 
 	def validate_form_title_is_present(self):
 		assert self.title, "Contact Us Form Title is not visible"
@@ -49,3 +52,18 @@ class ContactUsForm:
 
 	def validate_message_field_is_present(self):
 		assert self.message_field, "Message Field is not visible"
+
+	def write_email_address(self, email):
+		self.email_field.send_keys(email)
+
+	def write_message(self, message):
+		self.message_field.send_keys(message)
+
+	def click_send_button(self):
+		self.send_button.click()
+
+	def validate_error_message(self, error):
+		error_message = WebDriverWait(self.driver.instance, 10).until(
+			EC.visibility_of_element_located((
+				By.XPATH, "//li[contains(text(), '{0}')]".format(error))))
+
