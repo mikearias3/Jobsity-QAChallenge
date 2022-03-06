@@ -11,5 +11,5 @@ class HomeScreen:
             EC.visibility_of_element_located((
                 By.ID, "contact-link")))
 
-	def click_contact_us_button():
+	def click_contact_us_button(self):
 		self.contact_us_button.click()

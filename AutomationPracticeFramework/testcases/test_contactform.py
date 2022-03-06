@@ -1,6 +1,8 @@
 import unittest
 from webdriver import Driver
 from values import strings
+from pageobjects.homescreen import HomeScreen
+from pageobjects.contactusform import ContactUsForm
 
 
 class ContactUsFormTestSuite(unittest.TestCase):
@@ -19,7 +21,7 @@ class ContactUsFormTestSuite(unittest.TestCase):
 		self.contact_us_form.validate_subjectf_field_is_present()
 		self.contact_us_form.validate_email_field_is_present()
 		self.contact_us_form.validate_order_reference_field_is_present()
-		self.contact_us_form.validate_attatch_file_field_is_present()
+		self.contact_us_form.validate_attach_file_field_is_present()
 		self.contact_us_form.validate_message_field_is_present()
 
 	def tearDown(self):
