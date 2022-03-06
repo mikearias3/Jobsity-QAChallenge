@@ -1,5 +1,5 @@
 import unittest
-from webdriver import Webdriver
+from webdriver import Driver
 from values import strings
 
 
@@ -23,7 +23,7 @@ class ContactUsFormTestSuite(unittest.TestCase):
 		self.contact_us_form.validate_message_field_is_present()
 
 	def tearDown(self):
-        self.driver.instance.quit()
+		self.driver.instance.quit()
 
 
 if __name__ == '__main__':
