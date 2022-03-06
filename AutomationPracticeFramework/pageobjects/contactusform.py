@@ -1,4 +1,5 @@
 import allure
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
@@ -77,9 +78,12 @@ class ContactUsForm:
 
 	@allure.step("Validate a Contact Us Form error message")
 	def validate_error_message(self, error):
-		error_message = WebDriverWait(self.driver.instance, 10).until(
-			EC.visibility_of_element_located((
-				By.XPATH, "//li[contains(text(), '{0}')]".format(error))))
+		try:
+			error_message = WebDriverWait(self.driver.instance, 10).until(
+				EC.visibility_of_element_located((
+					By.XPATH, "//li[contains(text(), '{0}')]".format(error))))
+		except TimeoutException:
+			assert False, "Error Message was not displayed."
 
 	@allure.step("Select a Subject Heading")
 	def select_subject_heading(self, subject):
